@@ -1,43 +1,28 @@
 ---
 layout: default
-title: Security Test Page
+title: Security Test
 ---
 
-# XSS POC Demo
+## XSS Test Page
 
-## Test Cases
-
-### 1. Basic XSS Test
 {% raw %}
 {% highlight javascript %}
-// Basic console output
-console.log("Page loaded successfully");
+// Test 1
+console.log("URL: " + window.location.href);
+
+// Test 2
+function testAlert() {
+    alert("Domain: " + document.domain);
+}
+testAlert();
 {% endhighlight %}
 {% endraw %}
 
-### 2. Theme Processing Test
+## Test Section
+
 ```javascript
-// Theme customization test
+// Additional test
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Theme loaded");
+    console.log("Page loaded");
 });
 ```
-
-### 3. Markdown Processing Test
-[Click me](javascript:alert('Markdown XSS Test'))
-
-### 4. HTML Injection Test
-<div id="test">
-Testing HTML processing
-</div>
-
-### 5. Plugin Test
-{% raw %}
-{% highlight python %}
-def test():
-    print("Plugin test")
-{% endhighlight %}
-{% endraw %}
-
-## Results
-Check the browser console and alerts for test results.
