@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    
+    <!-- Safe test only - no data theft -->
+    <script>
+        console.log("Page Info:", {
+            url: window.location.href,
+            title: document.title,
+            domain: document.domain
+        });
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>{{ site.title }}</h1>
+            <p>{{ site.description }}</p>
+        </header>
+
+        <section>
+            {{ content }}
+        </section>
+
+        <footer>
+            <p>Test site for security research</p>
+        </footer>
+    </div>
+
+    <!-- Safe test script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Show alert with basic page info
+            alert("Test running on: " + document.domain);
+            
+            // Log page load time
+            console.log("Page loaded at:", new Date().toISOString());
+        });
+    </script>
+</body>
+</html>

